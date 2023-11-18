@@ -1,0 +1,53 @@
+.custom-box-profile{
+    width: auto;
+    height: auto;
+    margin-top: 30px;
+    padding-bottom: 50px;
+    text-align: center;
+    margin-left: 1px;
+    position: relative; /* Thêm position: relative cho .login-box */
+    z-index: 2; /* Đặt z-index để đè lên header, nhưng không đè lên footer */
+    display: flex; /* Sử dụng Flexbox cho .login-box */
+    justify-content: space-between; /* Chia cách các phần tử bên trong .login-box */
+    background: rgb(201, 201, 201, 0.2);
+    margin-left: 20%;
+    margin-right: 20%;
+    margin-bottom: 20px;
+    border-radius: 20px;
+    padding: 20px;
+}
+
+.ds-profilt{
+    padding-left: 20px;
+    display: block;
+    text-align: left;
+    margin-bottom: 5px;
+}
+.selected-image {
+    border-radius: 50%; 
+    width: 300px;      
+    height: 300px;     
+    object-fit: cover; 
+    margin-top: 10px; 
+  }
+  
+  button[type=submit2] {
+    background-color: #ff5733;
+    color: #fff;
+    width: 130px;
+  margin-top: 20px;
+  margin-right: 150px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    position: relative;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+    }
+
+
+    .ttcannhan{
+        font-size: 30px;
+        font-weight: 800;
+        margin-left: 200px;
+    }

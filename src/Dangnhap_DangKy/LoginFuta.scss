@@ -1,0 +1,185 @@
+.body-content {
+    max-width: 1100px;
+   margin: 0 auto;
+}
+
+.login-box {
+    margin-left: 180px;
+    width: 1000px;
+    height: 450px;
+    margin-top: -80px; /* Điều chỉnh khoảng cách giữa .login-box và header để đè lên header */
+    border: 1px solid rgba(239, 82, 34, 0.6);
+    border-radius: 20px;
+    padding: 20px;
+    text-align: center;
+    position: relative; /* Thêm position: relative cho .login-box */
+    z-index: 2; /* Đặt z-index để đè lên header, nhưng không đè lên footer */
+    display: flex; /* Sử dụng Flexbox cho .login-box */
+    justify-content: space-between; /* Chia cách các phần tử bên trong .login-box */
+    background: white;
+}
+
+.create-account {
+    background-color: #fff;
+    padding: 20px;
+    width: 60%;
+    margin: 0 auto;
+    text-align: center;
+
+    b {
+        font-size: 20px;
+        color: #333;
+    }
+}
+
+.login-left {
+    align-items: center;
+    justify-content: center;
+    margin: 20px 0;
+
+    
+        a {
+            cursor: pointer;
+            margin: 0 10px;
+            font-size: 16px;
+            margin-right: 30px;
+            font-weight: 400;
+            text-decoration: none;
+            color: black;
+        }
+    
+
+    a:hover {
+        color: #007BFF;
+    }
+}
+
+.custom-hr {
+    border: none; /* Loại bỏ đường kẻ mặc định */
+    border-top: 2px solid #333; /* Tạo một đường kẻ ngang 2px với màu đen */
+    margin: 20px 0; /* Tạo khoảng cách trên và dưới dòng ngang */
+    transition: width 0.3s ease-in-out; /* Thêm hiệu ứng transition cho độ rộng */
+    width: 100%;
+}
+
+.custom-hr.right-clicked {
+    width: 1.5em; /* Độ rộng tăng lên khi bên phải được nhấn */
+}
+
+.custom-hr.left-clicked {
+    width: 0.5em; /* Độ rộng tăng lên khi bên trái được nhấn */
+}
+
+.input-group {
+    margin: 10px 0;
+    text-align: left;
+
+    input[type="text"],
+    input[type="password"] {
+        width: 100%;
+        border-radius: 6px !important;
+        height: 44px !important;
+        border: 1px solid rgba(239, 82, 34, 0.3) !important;
+        background: rgba(239, 82, 34, 0.05);
+        margin-top: 20px;
+        padding-left: 20px; /* Đặt khoảng cách 10px bên trái */
+    }
+}
+
+.phone-input {
+    width: 25px; /* Điều chỉnh chiều rộng của hình ảnh */
+    height: 25px; /* Điều chỉnh chiều cao của hình ảnh */
+    position: absolute; /* Cho phép vị trí tuyệt đối để đặt hình ảnh đè lên ô nhập */
+    top: 50%; /* Đặt vị trí theo chiều dọc giữa ô nhập */
+    right: 320px; /* Đặt vị trí theo chiều ngang từ bên phải của ô nhập */
+    transform: center; /* Để đặt vị trí chính giữa dọc */
+}
+
+.btn-login{
+    background-color: #ef5222;
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    margin-top: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%;
+    height: 40px;
+
+
+
+   
+
+    &:hover {
+        background-color: #ef5222;
+}
+
+
+}
+
+.login-form {
+    flex: 1; /* Phần bên phải có độ rộng linh hoạt để lấp đầy không gian còn lại */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    input {
+        margin: 5px 0;
+        padding: 10px;
+    }
+
+    button {
+        background-color: orange;
+        color: white;
+     
+        border: none;
+        cursor: pointer;
+        width: 100%;
+        position: relative; /* Đặt vị trí là tương đối */
+      
+    }
+}
+
+.login-images {
+
+    justify-content: space-between; // Canh 2 hình về 2 bên
+    width: 900px; // Độ rộng cố định 300px
+    margin: 0 auto; // Canh giữa 2 hình trong khung 300px
+  
+    .login-image1,
+    .login-image2 {
+      width: 75%; // Mỗi hình chiếm 50% chiều rộng của khung
+      max-width: 100%; // Giới hạn kích thước tối đa cho hình
+    }
+  
+    img {
+      max-width: 100%; // Đảm bảo hình không vượt quá kích thước của nó
+      height: auto; // Duy trì tỷ lệ khung hình
+    }
+  }
+  
+  
+
+.text-main {
+    b {
+        color: #00613d;
+        font-size: 28px;
+        line-height: 33px;
+    }
+
+    text-align: center;
+    margin-top: 10px;
+
+    h6 {
+        text-align: center;
+        font-size: 16px;
+    }
+}
+
+.conmat {
+  position: absolute;
+   margin-left: 315px;
+   margin-top: 30px;
+    /* Sử dụng top và left để điều chỉnh vị trí của span trong input */
+  }

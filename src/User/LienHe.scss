@@ -1,0 +1,67 @@
+.custom-toast{
+    background-color: #fea333; /* Màu nền */
+    color: #FFFFFF; /* Màu chữ */
+    font-size: 16px; /* Kích thước chữ */
+  }
+.title2{
+    font-size: 25px;
+    color: #fd9311;
+    text-align: center;
+    font-weight: bold;
+    margin-top: 20px;
+}
+.custom-box2{
+    width: auto;
+    height: auto;
+    margin-top: 30px;
+    padding-bottom: 50px;
+    text-align: center;
+    margin-left: 1px;
+    position: relative; /* Thêm position: relative cho .login-box */
+    z-index: 2; /* Đặt z-index để đè lên header, nhưng không đè lên footer */
+    display: flex; /* Sử dụng Flexbox cho .login-box */
+    justify-content: space-between; /* Chia cách các phần tử bên trong .login-box */
+    background: rgb(201, 201, 201, 0.3);
+    margin-left: 20%;
+    margin-right: 20%;
+    margin-bottom: 20px;
+}
+
+input[type=text2]{
+    width: 350px;
+    margin-top: 25px;
+    margin-left: 25px;
+    margin-right: 25px;
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+input[type=title2]{
+    width: 782px;
+    padding: 10px;
+    margin-left: 38px;
+    margin-top: 25px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+textarea[type=note]{
+    width: 782px;
+    height: 230px;
+    padding: 10px;
+    margin-left: 38px;
+    margin-top: 25px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+input[type=submit]{
+    padding-top: 5px;
+    margin-top: 20px;
+    padding-bottom: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 5px;
+    background-color: #fd9311;
+    color: #FFFFFF;
+}

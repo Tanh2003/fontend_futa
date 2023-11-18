@@ -1,0 +1,118 @@
+.daune {
+    background-image: url('../image/home_banner.png');
+    
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    height: 200px;
+    padding: 20px;
+    position: relative; /* Thêm position: relative cho header */
+   
+}
+
+.daune {
+   
+    margin: 0 auto;
+}
+.box-ovan{
+    width: 300px;
+    height: 300px;
+    background-image: url('../image/logo_new.8a0251b8.svg');
+    background-repeat: no-repeat;
+    
+    /* Định vị ở giữa trang web và đỉnh */
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+ 
+
+}
+
+// Định nghĩa kiểu cho dropdown và các phần tử con
+.text-loginleft {
+    margin-left: 1000px;
+    width: 190px;
+    height: 30px;
+    background: white;
+    border-radius: 20px;
+    font-size: 13px;
+    padding-left: 10px;
+    padding-top: 5px;
+    font-weight: 550;
+  
+    img {
+      padding-bottom: 4px;
+    }
+  
+    // Thiết lập dropdown toggle
+    .dropdown-toggle {
+      // Tùy chỉnh kiểu cho toggle button
+     
+      width: 0px;
+      height: 0px;
+      background: white;
+      border-radius: 20px;
+      font-size: 13px;
+      padding-left: 0px;
+      padding-top: 0px;
+      margin-bottom: 15px;
+
+      font-weight: 550;
+    }
+  
+    // Thiết lập kiểu cho dropdown menu
+    .dropdown-menu {
+      // Tùy chỉnh kiểu cho dropdown menu
+   
+      margin-top: 15px;
+  
+
+  
+     
+    }
+  }
+
+
+.main-menu {
+    /* top: 10px; */
+    position: relative;
+    text-align: center; 
+    margin-top: 20px;
+    transition: transform 0.3s;
+
+}
+.main-menu:hover{
+    transform: scale(1.3); /* Phóng to lên 1.1 lần kích thước ban đầu */
+    }
+.main-menu > ul > li {
+    display: inline-block;
+    padding: 20px; 
+    font-size: 18px;
+    font-weight: 550;
+    top: 50px;
+    color: azure;
+    
+}
+
+.main-menu > ul > li:hover {
+    text-decoration: none;
+    }
+.main-menu > ul > li > a:hover {
+    color: #fffb00;
+    
+}
+.main-menu > ul {
+    list-style-type: none; /* Loại bỏ dấu chấm trước mục trong danh sách */
+    padding: 0;
+}
+
+.main-menu > ul > li {
+    display: inline; /* Hiển thị mục menu cùng hàng ngang */
+    margin-right: 20px; /* Khoảng cách giữa các mục menu */
+}
+
+.main-menu > ul > li > a {
+    text-decoration: none; /* Loại bỏ gạch chân của liên kết */
+    color: #ffffff; /* Màu chữ của liên kết - ví dụ: màu cam đậm */
+}
