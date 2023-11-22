@@ -158,7 +158,7 @@ class ModalChuyenxe extends Component {
                     <label>Điểm đến</label>
                     <input
                       className="form-control"
-                      placeholder="Họ và tên"
+                      placeholder="Nhập điểm đến"
                       onChange={(event) => {
                         this.handleOnChangeInput(event, "diemden");
                       }}
