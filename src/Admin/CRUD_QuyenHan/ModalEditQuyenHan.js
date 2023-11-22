@@ -98,7 +98,7 @@ class ModalEditQuyenHan extends Component {
                     <label>Tên quyền</label>
                     <input
                       className="form-control"
-                      placeholder=" nhap so xe...."
+                      placeholder="Nhập tên quyền"
                       onChange={(event) => {
                         this.handleOnChangeInput(event, "tenquyen");
                       }}

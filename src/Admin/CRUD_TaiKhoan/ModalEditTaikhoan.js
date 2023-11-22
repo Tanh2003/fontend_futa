@@ -101,7 +101,7 @@ class ModalEditTaikhoan extends Component {
     this.toggle();
   }}
 >
-  Sửa Thông tin Tài khoản
+  Sửa thông tin tài khoản
   <span className="close-button" onClick={this.toggle}>
     &times; {/* X symbol */}
   </span>
@@ -123,7 +123,7 @@ class ModalEditTaikhoan extends Component {
                     />
                   </div>
                   <div className="form-group col-md-6">
-                    <label>mật khẩu</label>
+                    <label>Mật khẩu</label>
                     <input
                       className="form-control"
                       placeholder="iphone"

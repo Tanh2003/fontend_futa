@@ -101,7 +101,7 @@ class ModalEditXe extends Component {
                     <label>Số xe </label>
                     <input
                       className="form-control"
-                      placeholder=" nhap so xe...."
+                      placeholder="Nhập số xe"
                       onChange={(event) => {
                         this.handleOnChangeInput(event, "soxe");
                       }}
@@ -112,7 +112,7 @@ class ModalEditXe extends Component {
                     <label>Loại xe </label>
                     <input
                       className="form-control"
-                      placeholder=" nhap loai xe...."
+                      placeholder="nhập loại xe"
                       onChange={(event) => {
                         this.handleOnChangeInput(event, "loaixe");
                       }}

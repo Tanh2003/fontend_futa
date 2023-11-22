@@ -172,7 +172,7 @@ class ModalEditTTChuyenxe extends Component {
                     <label>Số lượng vé</label>
                     <input
                       className="form-control"
-                      placeholder=" nhap so dien thoai...."
+                      placeholder="Nhập số lượng vé"
                       type="number"
                       onChange={(event) => {
                         this.handleOnChangeInput(event, "soluongve");

@@ -104,7 +104,7 @@ class ModalEditVexe extends Component {
                     <label>Tên chuyến:</label>
                     <input
                       className="form-control"
-                      placeholder=" nhap so dien thoai...."
+                      placeholder="Nhập tên chuyến"
                       onChange={(event) => {
                         this.handleOnChangeInput(event, "tenchuyen");
                       }}

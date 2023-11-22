@@ -130,7 +130,7 @@ class ModalKhachhang extends Component {
                     <label>Số Điện thoại:</label>
                     <input
                       className="form-control"
-                      placeholder=" nhap so dien thoai...."
+                      placeholder="Nhập số điện thoại"
                       onChange={(event) => {
                         this.handleOnChangeInput(event, "sdt");
                       }}
@@ -141,7 +141,7 @@ class ModalKhachhang extends Component {
                     <label>Email:</label>
                     <input
                       className="form-control"
-                      placeholder=" nhap so dien thoai...."
+                      placeholder="Nhập email"
                       type="email"
                       onChange={(event) => {
                         this.handleOnChangeInput(event, "email");
@@ -165,7 +165,7 @@ class ModalKhachhang extends Component {
                     <label>Địa chỉ:</label>
                     <input
                       className="form-control"
-                      placeholder=" nhap so dien thoai...."
+                      placeholder="Nhập địa chỉ"
                       onChange={(event) => {
                         this.handleOnChangeInput(event, "diachi");
                       }}

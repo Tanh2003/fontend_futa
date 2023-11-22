@@ -2,9 +2,8 @@ import React, { Component } from "react";
 import {
   getAllTTchuyenxe,
   createNewTTchuyenxe,
-  deleteTTchuyenxe ,
+  deleteTTchuyenxe,
   editTTchuyenxe,
-
 } from "../../userService";
 import { emitter } from "../../utils/emitter";
 import { toast } from "react-toastify";
@@ -12,7 +11,6 @@ import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
 import ModalTTChuyenxe from "./ModalTTChuyenxe";
 import ModalEditTTChuyenxe from "./ModalEditTTChuyenxe";
-
 
 class TTChuyenxeManager extends Component {
   constructor(props) {
@@ -128,7 +126,7 @@ class TTChuyenxeManager extends Component {
    * 2.did mouth(set state)
    * 3.render
    */
-   formatDate = (isoDate) => {
+  formatDate = (isoDate) => {
     const dateObject = new Date(isoDate);
     // const hours = dateObject.getHours();
     // const minutes = dateObject.getMinutes();
@@ -172,7 +170,7 @@ class TTChuyenxeManager extends Component {
                     className=" btn btn-primary px-3"
                     onClick={() => this.handleAddCategories()}
                   >
-                    <i class="fas fa-box mr-2"></i>Thêm Chuyến xe
+                    <i class="fas fa-box mr-2"></i>Thêm chuyến xe
                   </button>
 
                   <h2 className="h2--title">Danh sách chuyến xe</h2>
@@ -181,9 +179,9 @@ class TTChuyenxeManager extends Component {
                     <table>
                       <thead>
                         <tr>
-                          
-                          <th>ngày</th>
-                          <th>số lượng vé</th>
+                          <th>Mã chuyến</th>
+                          <th>Ngày</th>
+                          <th>Số lượng vé</th>
                           <th>Thời gian</th>
                           <th>Hành động</th>
                         </tr>
@@ -193,8 +191,9 @@ class TTChuyenxeManager extends Component {
                           currentProducts.map((item, index) => {
                             return (
                               <tr key={index}>
+                                <td>{item.machuyen}</td>
                                 <td>{this.formatDate(item.ngay)}</td>
-                                <td>{item.soluongve	} <strong>Km</strong></td>
+                                <td>{item.soluongve}</td>
                                 <td>{item.thoigian}</td>
                                 <td>
                                   <button
@@ -205,8 +204,6 @@ class TTChuyenxeManager extends Component {
                                   >
                                     <i className="fa-regular fa-pen-to-square"></i>
                                   </button>
-
-                            
 
                                   <button
                                     className="btn-del"
@@ -227,7 +224,9 @@ class TTChuyenxeManager extends Component {
                     <Stack spacing={2}>
                       <Pagination
                         shape="rounded"
-                        count={Math.ceil(arrTTchuyenxe.length / productsPerPage)}
+                        count={Math.ceil(
+                          arrTTchuyenxe.length / productsPerPage
+                        )}
                         page={currentPage}
                         onChange={this.handlePageChange}
                       />

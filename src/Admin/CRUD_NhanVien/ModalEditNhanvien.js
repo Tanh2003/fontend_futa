@@ -5,21 +5,15 @@ import _ from "lodash";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
-
-
-
 class ModalEditNhanvien extends Component {
   constructor(props) {
     super(props);
     this.state = {
       id: "", // Thêm "id" vào trạng thái ban đầu
-      hoten:"",
-      diachi:"",
-      ngaysinh:" ", // Khởi tạo ngày mặc định
-      gioitinh:"",
-     
-      
-     
+      hoten: "",
+      diachi: "",
+      ngaysinh: " ", // Khởi tạo ngày mặc định
+      gioitinh: "",
     };
   }
 
@@ -29,13 +23,10 @@ class ModalEditNhanvien extends Component {
     if (user && !_.isEmpty(user)) {
       this.setState({
         id: user.id,
-        hoten:user.hoten,
-        diachi:user.diachi,
-        ngaysinh:user.ngaysinh,
-        gioitinh:user.gioitinh,
-    
-      
-       
+        hoten: user.hoten,
+        diachi: user.diachi,
+        ngaysinh: user.ngaysinh,
+        gioitinh: user.gioitinh,
       });
     }
   }
@@ -61,19 +52,13 @@ class ModalEditNhanvien extends Component {
     // console.log(event.target.value,id)
   };
 
-  
-
   handleSaveUser = () => {
-   
-
-  
-      this.props.editUser(this.state);
-   
+    this.props.editUser(this.state);
   };
   handleDateChange = (date) => {
     this.setState({ ngaysinh: date });
   };
-  
+
   render() {
     return (
       <Modal
@@ -85,24 +70,22 @@ class ModalEditNhanvien extends Component {
         size="lg"
         centered
       >
-              <ModalHeader
-  className="custom-header" // Use the custom CSS class
-  toggle={() => {
-    this.toggle();
-  }}
->
-  Sửa Tên quyền
-  <span className="close-button" onClick={this.toggle}>
-    &times; {/* X symbol */}
-  </span>
-</ModalHeader>
-<ModalBody>
+        <ModalHeader
+          className="custom-header" // Use the custom CSS class
+          toggle={() => {
+            this.toggle();
+          }}
+        >
+          Sửa thông tin nhân viên
+          <span className="close-button" onClick={this.toggle}>
+            &times; {/* X symbol */}
+          </span>
+        </ModalHeader>
+        <ModalBody>
           <div className="user-redux-body">
             <div className="container center">
               <div className="row-12">
                 <div className="form-row">
-                
-                  
                   <div className="form-group col-md-6">
                     <label>Họ và Tên: </label>
                     <input
@@ -118,7 +101,7 @@ class ModalEditNhanvien extends Component {
                     <label>Địa chỉ:</label>
                     <input
                       className="form-control"
-                      placeholder=" nhap so dien thoai...."
+                      placeholder="Nhập địa chỉ"
                       onChange={(event) => {
                         this.handleOnChangeInput(event, "diachi");
                       }}
@@ -127,26 +110,26 @@ class ModalEditNhanvien extends Component {
                   </div>
                   <div className="form-group col-md-6">
                     <label>Giới Tính:</label>
-                   <select onChange={(event) => {
+                    <select
+                      onChange={(event) => {
                         this.handleOnChangeInput(event, "gioitinh");
                       }}
                       value={this.state.gioitinh}
-                      >
-                    <option value="Nam">Nam</option>
-                    <option value="Nữ">Nữ</option>
-                   </select>
+                    >
+                      <option value="Nam">Nam</option>
+                      <option value="Nữ">Nữ</option>
+                    </select>
                   </div>
                   <div className="form-group col-md-6">
                     <label>Ngày sinh: </label>
                     <DatePicker
-  selected={new Date(this.state.ngaysinh)}
-  value={this.state.ngaysinh}
-  onChange={(date) => {
-    this.handleDateChange(date);
-  }}
-  dateFormat="dd/MM/yyyy"
-/>
-
+                      selected={new Date(this.state.ngaysinh)}
+                      value={this.state.ngaysinh}
+                      onChange={(date) => {
+                        this.handleDateChange(date);
+                      }}
+                      dateFormat="dd/MM/yyyy"
+                    />
                   </div>
                 </div>
               </div>

@@ -3,19 +3,15 @@ import {
   getAllQuyenhan,
   createNewQuyenhan,
   deleteQuyenhan,
-  editQuyenhan
+  editQuyenhan,
 } from "../../userService";
 import { emitter } from "../../utils/emitter";
 import { toast } from "react-toastify";
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
 
-
 import ModalQuyenHan from "./ModalQuyenHan";
 import ModalEditQuyenHan from "./ModalEditQuyenHan";
-
-
-
 
 class QuyenHanManager extends Component {
   constructor(props) {
@@ -27,17 +23,15 @@ class QuyenHanManager extends Component {
       productEdit: {},
       currentPage: 1,
       productsPerPage: 5,
-      
     };
     this.handlePageChange = this.handlePageChange.bind(this); // Thêm dòng này
   }
 
   async componentDidMount() {
-  
     await this.getAllQuyenHanReact();
   }
   getAllQuyenHanReact = async () => {
-    let response = await  getAllQuyenhan("ALL");
+    let response = await getAllQuyenhan("ALL");
     if (response && response.errcode == 0) {
       this.setState({
         arrquyenhan: response.quyenhan,
@@ -45,37 +39,23 @@ class QuyenHanManager extends Component {
     }
   };
 
-
-
-
-
-
-
-
-
-
-
-
-
-
   handleAddCategories = () => {
     this.setState({
       isOpenModalCategories: true,
     });
   };
-  toggleCategoriesModal= () => {
+  toggleCategoriesModal = () => {
     this.setState({
       isOpenModalCategories: !this.state.isOpenModalCategories,
     });
   };
 
- 
   toggleUserEditModal = () => {
     this.setState({
       isOpenModalEditProduct: !this.state.isOpenModalEditProduct,
     });
   };
-  
+
   createNewXe = async (data) => {
     try {
       let response = await createNewQuyenhan(data);
@@ -84,10 +64,9 @@ class QuyenHanManager extends Component {
       } else {
         await this.getAllQuyenHanReact();
         this.setState({
-          isOpenModalCategories:false,
+          isOpenModalCategories: false,
         });
         emitter.emit("EVENT_CLEAR_MODAL_DATA");
-       
       }
       //  console.log("response create user: " , response)
     } catch (e) {
@@ -104,7 +83,7 @@ class QuyenHanManager extends Component {
         toast.error("Xóa thất bại");
       } else {
         await this.getAllQuyenHanReact();
-        toast.success("Xóa Thành công");
+        toast.success("Xóa thành công");
       }
       console.log(res);
     } catch (e) {
@@ -121,28 +100,26 @@ class QuyenHanManager extends Component {
 
   doEditXe = async (user) => {
     try {
-      let res = await  editQuyenhan(user);
+      let res = await editQuyenhan(user);
       if (res && res.errcode === 0) {
         await this.getAllQuyenHanReact();
-        toast.success("Sửa Thành công");
+        toast.success("Sửa thành công");
         this.setState({
           isOpenModalEditProduct: false,
         });
       } else {
-        toast.error("Sửa Thất bại");
+        toast.error("Sửa thất bại");
       }
     } catch (e) {
       console.log(e);
     }
   };
 
-
   handlePageChange(event, page) {
     this.setState({
       currentPage: page,
     });
   }
-  
 
   /**Life cycle
    * Run component:
@@ -155,11 +132,13 @@ class QuyenHanManager extends Component {
     const { arrquyenhan, currentPage, productsPerPage } = this.state;
     const indexOfLastProduct = currentPage * productsPerPage;
     const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
-    const currentProducts = arrquyenhan.slice(indexOfFirstProduct, indexOfLastProduct);
+    const currentProducts = arrquyenhan.slice(
+      indexOfFirstProduct,
+      indexOfLastProduct
+    );
     return (
       <div className="hello">
-      
-         <ModalQuyenHan
+        <ModalQuyenHan
           isOpen={this.state.isOpenModalCategories}
           toggleFromParent={this.toggleCategoriesModal}
           createNewXe={this.createNewXe}
@@ -178,31 +157,28 @@ class QuyenHanManager extends Component {
           <div className="col">
             <div className="col-md-12">
               <div className="f-index">
-                
                 <div className="tabular--wrapper">
                   <button
                     className=" btn btn-primary px-3"
                     onClick={() => this.handleAddCategories()}
                   >
-                  <i class="fas fa-box mr-2"></i>Thêm tên quyền
+                    <i class="fas fa-box mr-2"></i>Thêm tên quyền
                   </button>
-                  
+
                   <h2 className="h2--title">Danh sách quyền</h2>
 
                   <div className="table-container">
                     <table>
                       <thead>
                         <tr>
-                          <th>id</th>
+                          <th>Id</th>
                           <th>Tên quyền</th>
                           <th>Hành động</th>
-                        
                         </tr>
                       </thead>
                       <tbody>
                         {currentProducts &&
                           currentProducts.map((item, index) => {
-                    
                             return (
                               <tr key={index}>
                                 <td>{item.id}</td>
@@ -230,22 +206,20 @@ class QuyenHanManager extends Component {
                                 </td>
                               </tr>
                             );
-                                  
                           })}
                       </tbody>
                     </table>
                   </div>
                   <div className="phantrang">
-                  <Stack spacing={2}>
-                    <Pagination shape="rounded"
-                      count={Math.ceil(arrquyenhan.length / productsPerPage)}
-                      page={currentPage}
-                      onChange={this.handlePageChange}
-                    />
-                  </Stack>
-
+                    <Stack spacing={2}>
+                      <Pagination
+                        shape="rounded"
+                        count={Math.ceil(arrquyenhan.length / productsPerPage)}
+                        page={currentPage}
+                        onChange={this.handlePageChange}
+                      />
+                    </Stack>
                   </div>
-                  
                 </div>
               </div>
             </div>

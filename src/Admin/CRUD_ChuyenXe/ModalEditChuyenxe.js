@@ -5,22 +5,16 @@ import _ from "lodash";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
-
-
-
 class ModalEditChuyenxe extends Component {
   constructor(props) {
     super(props);
     this.state = {
       id: "", // Thêm "id" vào trạng thái ban đầu
       tenchuyen: "",
-      dodai:"",
-      diemdi:"",
-      diemden:" ", // Khởi tạo ngày mặc định
-      gia:"",
-     
-      
-     
+      dodai: "",
+      diemdi: "",
+      diemden: " ", // Khởi tạo ngày mặc định
+      gia: "",
     };
   }
 
@@ -30,13 +24,11 @@ class ModalEditChuyenxe extends Component {
     if (user && !_.isEmpty(user)) {
       this.setState({
         id: user.id,
-        tenchuyen:user.tenchuyen,
-        dodai:user.dodai,
-        diemdi:user.diemdi,
-        diemden:user.diemden ,
-        gia:user.gia,
-      
-       
+        tenchuyen: user.tenchuyen,
+        dodai: user.dodai,
+        diemdi: user.diemdi,
+        diemden: user.diemden,
+        gia: user.gia,
       });
     }
   }
@@ -62,17 +54,10 @@ class ModalEditChuyenxe extends Component {
     // console.log(event.target.value,id)
   };
 
-  
-
   handleSaveUser = () => {
-   
-
-  
-      this.props.editUser(this.state);
-   
+    this.props.editUser(this.state);
   };
 
-  
   render() {
     return (
       <Modal
@@ -84,27 +69,27 @@ class ModalEditChuyenxe extends Component {
         size="lg"
         centered
       >
-              <ModalHeader
-  className="custom-header" // Use the custom CSS class
-  toggle={() => {
-    this.toggle();
-  }}
->
-  Sửa Tên quyền
-  <span className="close-button" onClick={this.toggle}>
-    &times; {/* X symbol */}
-  </span>
-</ModalHeader>
-<ModalBody>
+        <ModalHeader
+          className="custom-header" // Use the custom CSS class
+          toggle={() => {
+            this.toggle();
+          }}
+        >
+          Sửa thông tin chuyến xe
+          <span className="close-button" onClick={this.toggle}>
+            &times; {/* X symbol */}
+          </span>
+        </ModalHeader>
+        <ModalBody>
           <div className="user-redux-body">
             <div className="container center">
               <div className="row-12">
                 <div className="form-row">
                   <div className="form-group col-md-6">
-                    <label>Tên chuyến:</label>
+                    <label>Tên chuyến</label>
                     <input
                       className="form-control"
-                      placeholder=" nhap so dien thoai...."
+                      placeholder="Nhập tên chuyến"
                       onChange={(event) => {
                         this.handleOnChangeInput(event, "tenchuyen");
                       }}
@@ -115,7 +100,7 @@ class ModalEditChuyenxe extends Component {
                     <label>Độ dài</label>
                     <input
                       className="form-control"
-                      placeholder=" nhap so dien thoai...."
+                      placeholder="Nhập độ dài"
                       type="number"
                       onChange={(event) => {
                         this.handleOnChangeInput(event, "dodai");
@@ -123,12 +108,12 @@ class ModalEditChuyenxe extends Component {
                       value={this.state.dodai}
                     />
                   </div>
-                  
+
                   <div className="form-group col-md-6">
-                    <label>Điểm Đến</label>
+                    <label>Điểm đến</label>
                     <input
                       className="form-control"
-                      placeholder="Họ và tên"
+                      placeholder="Nhập điểm đến"
                       onChange={(event) => {
                         this.handleOnChangeInput(event, "diemden");
                       }}
@@ -139,7 +124,7 @@ class ModalEditChuyenxe extends Component {
                     <label>Điểm đi</label>
                     <input
                       className="form-control"
-                      placeholder=" nhap so dien thoai...."
+                      placeholder="Nhập điểm đi"
                       onChange={(event) => {
                         this.handleOnChangeInput(event, "diemdi");
                       }}
@@ -147,18 +132,16 @@ class ModalEditChuyenxe extends Component {
                     />
                   </div>
                   <div className="form-group col-md-6">
-                    <label>Giá:</label>
+                    <label>Giá</label>
                     <input
                       className="form-control"
-                      placeholder=" nhap so dien thoai...."
+                      placeholder="Nhập giá vé"
                       onChange={(event) => {
                         this.handleOnChangeInput(event, "gia");
                       }}
                       value={this.state.gia}
                     />
                   </div>
-                 
-                  
                 </div>
               </div>
             </div>

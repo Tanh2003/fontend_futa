@@ -1,21 +1,11 @@
 import React, { Component } from "react";
-import {
-  getAllXe,
-  createNewXe,
-  deleteXe,
-  editXe
-} from "../../userService";
+import { getAllXe, createNewXe, deleteXe, editXe } from "../../userService";
 import { emitter } from "../../utils/emitter";
 import { toast } from "react-toastify";
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
 import ModalXe from "./ModalXe";
 import ModalEditXe from "./ModalEditXe";
-
-
-
-
-
 
 class XeManager extends Component {
   constructor(props) {
@@ -27,17 +17,16 @@ class XeManager extends Component {
       productEdit: {},
       currentPage: 1,
       productsPerPage: 5,
-      previewImgURL:'',
+      previewImgURL: "",
     };
     this.handlePageChange = this.handlePageChange.bind(this); // Thêm dòng này
   }
 
   async componentDidMount() {
-  
     await this.getAllXeReact();
   }
   getAllXeReact = async () => {
-    let response = await  getAllXe("ALL");
+    let response = await getAllXe("ALL");
     if (response && response.errcode == 0) {
       this.setState({
         arrXe: response.xe,
@@ -45,37 +34,23 @@ class XeManager extends Component {
     }
   };
 
-
-
-
-
-
-
-
-
-
-
-
-
-
   handleAddCategories = () => {
     this.setState({
       isOpenModalCategories: true,
     });
   };
-  toggleCategoriesModal= () => {
+  toggleCategoriesModal = () => {
     this.setState({
       isOpenModalCategories: !this.state.isOpenModalCategories,
     });
   };
 
- 
   toggleUserEditModal = () => {
     this.setState({
       isOpenModalEditProduct: !this.state.isOpenModalEditProduct,
     });
   };
-  
+
   createNewXe = async (data) => {
     try {
       let response = await createNewXe(data);
@@ -84,10 +59,9 @@ class XeManager extends Component {
       } else {
         await this.getAllXeReact();
         this.setState({
-          isOpenModalCategories:false,
+          isOpenModalCategories: false,
         });
         emitter.emit("EVENT_CLEAR_MODAL_DATA");
-       
       }
       //  console.log("response create user: " , response)
     } catch (e) {
@@ -104,7 +78,7 @@ class XeManager extends Component {
         toast.error("Xóa thất bại");
       } else {
         await this.getAllXeReact();
-        toast.success("Xóa Thành công");
+        toast.success("Xóa thành công");
       }
       console.log(res);
     } catch (e) {
@@ -121,28 +95,26 @@ class XeManager extends Component {
 
   doEditXe = async (user) => {
     try {
-      let res = await  editXe(user);
+      let res = await editXe(user);
       if (res && res.errcode === 0) {
         await this.getAllXeReact();
-        toast.success("Sửa Thành công");
+        toast.success("Sửa thành công");
         this.setState({
           isOpenModalEditProduct: false,
         });
       } else {
-        toast.error("Sửa Thất bại");
+        toast.error("Sửa thất bại");
       }
     } catch (e) {
       console.log(e);
     }
   };
 
-
   handlePageChange(event, page) {
     this.setState({
       currentPage: page,
     });
   }
-  
 
   /**Life cycle
    * Run component:
@@ -155,11 +127,13 @@ class XeManager extends Component {
     const { arrXe, currentPage, productsPerPage } = this.state;
     const indexOfLastProduct = currentPage * productsPerPage;
     const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
-    const currentProducts = arrXe.slice(indexOfFirstProduct, indexOfLastProduct);
+    const currentProducts = arrXe.slice(
+      indexOfFirstProduct,
+      indexOfLastProduct
+    );
     return (
       <div className="hello">
-      
-         <ModalXe
+        <ModalXe
           isOpen={this.state.isOpenModalCategories}
           toggleFromParent={this.toggleCategoriesModal}
           createNewXe={this.createNewXe}
@@ -178,16 +152,15 @@ class XeManager extends Component {
           <div className="col">
             <div className="col-md-12">
               <div className="f-index">
-                
                 <div className="tabular--wrapper">
                   <button
                     className=" btn btn-primary px-3"
                     onClick={() => this.handleAddCategories()}
                   >
-                  <i class="fas fa-box mr-2"></i>Thêm  Thông tin xe
+                    <i class="fas fa-box mr-2"></i>Thêm Thông tin xe
                   </button>
-                  
-                  <h2 className="h2--title">Danh sách Thông tin xe</h2>
+
+                  <h2 className="h2--title">Danh sách thông tin xe</h2>
 
                   <div className="table-container">
                     <table>
@@ -201,7 +174,6 @@ class XeManager extends Component {
                       <tbody>
                         {currentProducts &&
                           currentProducts.map((item, index) => {
-                    
                             return (
                               <tr key={index}>
                                 <td>{item.soxe}</td>
@@ -229,22 +201,20 @@ class XeManager extends Component {
                                 </td>
                               </tr>
                             );
-                                  
                           })}
                       </tbody>
                     </table>
                   </div>
                   <div className="phantrang">
-                  <Stack spacing={2}>
-                    <Pagination shape="rounded"
-                      count={Math.ceil(arrXe.length / productsPerPage)}
-                      page={currentPage}
-                      onChange={this.handlePageChange}
-                    />
-                  </Stack>
-
+                    <Stack spacing={2}>
+                      <Pagination
+                        shape="rounded"
+                        count={Math.ceil(arrXe.length / productsPerPage)}
+                        page={currentPage}
+                        onChange={this.handlePageChange}
+                      />
+                    </Stack>
                   </div>
-                  
                 </div>
               </div>
             </div>
