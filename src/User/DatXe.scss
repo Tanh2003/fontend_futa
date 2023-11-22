@@ -258,3 +258,21 @@ color: orange;
 font-weight: bold;
 padding-top: 20px;
 }
+
+.seat-content {
+  position: relative;
+}
+
+.seat-number {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+}
+
+.ds-img {
+  width: 100%; 
+  border: none; 
+  border-radius: 0; 
+}
