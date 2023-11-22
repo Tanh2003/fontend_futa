@@ -166,7 +166,7 @@ class XeManager extends Component {
                     <table>
                       <thead>
                         <tr>
-                          <th>id</th>
+                          <th>Id</th>
                           <th>Số Xe</th>
                           <th>Loại xe</th>
                         </tr>

@@ -131,10 +131,10 @@ class ModalChuyenxe extends Component {
               <div className="row-12">
                 <div className="form-row">
                   <div className="form-group col-md-6">
-                    <label>Tên chuyến:</label>
+                    <label>Tên chuyến</label>
                     <input
                       className="form-control"
-                      placeholder=" nhap so dien thoai...."
+                      placeholder="Nhập tên chuyến"
                       onChange={(event) => {
                         this.handleOnChangeInput(event, "tenchuyen");
                       }}
@@ -145,7 +145,7 @@ class ModalChuyenxe extends Component {
                     <label>Độ dài</label>
                     <input
                       className="form-control"
-                      placeholder=" nhap so dien thoai...."
+                      placeholder="Nhập độ dài"
                       type="number"
                       onChange={(event) => {
                         this.handleOnChangeInput(event, "dodai");
@@ -155,7 +155,7 @@ class ModalChuyenxe extends Component {
                   </div>
                   
                   <div className="form-group col-md-6">
-                    <label>Điểm Đến</label>
+                    <label>Điểm đến</label>
                     <input
                       className="form-control"
                       placeholder="Họ và tên"
@@ -169,7 +169,7 @@ class ModalChuyenxe extends Component {
                     <label>Điểm đi</label>
                     <input
                       className="form-control"
-                      placeholder=" nhap so dien thoai...."
+                      placeholder="Nhập điểm đi"
                       onChange={(event) => {
                         this.handleOnChangeInput(event, "diemdi");
                       }}
@@ -177,10 +177,10 @@ class ModalChuyenxe extends Component {
                     />
                   </div>
                   <div className="form-group col-md-6">
-                    <label>Giá:</label>
+                    <label>Giá</label>
                     <input
                       className="form-control"
-                      placeholder="gia"
+                      placeholder="Nhập giá"
                       onChange={(event) => {
                         this.handleOnChangeInput(event, "gia");
                       }}
