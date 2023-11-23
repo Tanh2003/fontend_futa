@@ -123,7 +123,7 @@ class ModalTaikhoan extends Component {
                     <label>Tài khoản </label>
                     <input
                       className="form-control"
-                      placeholder="Iphone..."
+                      placeholder="Nhập tên tài khoản"
                       onChange={(event) => {
                         this.handleOnChangeInput(event, "sdt");
                       }}
@@ -134,7 +134,7 @@ class ModalTaikhoan extends Component {
                     <label>Mật khẩu</label>
                     <input
                       className="form-control"
-                      placeholder="Iphone..."
+                      placeholder="Nhập mật khẩu"
                       onChange={(event) => {
                         this.handleOnChangeInput(event, "matkhau");
                       }}
