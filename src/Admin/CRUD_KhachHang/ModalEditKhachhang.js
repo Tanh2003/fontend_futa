@@ -93,7 +93,7 @@ class ModalEditKhachhang extends Component {
     this.toggle();
   }}
 >
-  Sửa Tên quyền
+  Sửa thông tin khách hàng
   <span className="close-button" onClick={this.toggle}>
     &times; {/* X symbol */}
   </span>
