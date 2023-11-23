@@ -14,7 +14,7 @@ import { format } from "date-fns";
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-const moment = require('moment');
+const moment = require("moment");
 
 function TimKiem() {
   const [selectedDate, setSelectedDate] = useState(null);
@@ -81,13 +81,14 @@ function TimKiem() {
   const [chuyenXe, setChuyenXe] = useState([]);
 
   const formattedDate = selectedDate
-  ? format(selectedDate, "yyyy-MM-dd'T'17:mm:ss'.000Z'")
-  : "";
+    ? format(selectedDate, "yyyy-MM-dd'T'17:mm:ss'.000Z'")
+    : "";
   const handleTimVe = () => {
     // Lấy giá trị điểm đi và điểm đến từ selectedOption và selectedOption2
     const diemDi = selectedOption.value; // Sử dụng optional chaining để xử lý trường hợp giá trị null
     const diemDen = selectedOption2.value;
     const ngayDi = formattedDate;
+
     // Lọc danh sách chuyến xe dựa trên các thông tin đã nhập
     const danhSachChuyenXeDaLoc = danhsachchuyenxe.filter((chuyenDi) => {
       const ngayDaDinhDang = moment(chuyenDi.idmachuyenData.ngay).format('MM/DD/YYYY');
@@ -95,31 +96,31 @@ function TimKiem() {
      
       return chuyenDi.diemdi === diemDi && chuyenDi.diemden === diemDen&&ngayDaDinhDang===ngaydi2;
     });
+
     // Cập nhật danh sách chuyến xe trong trạng thái chuyenXe
     setChuyenXe(danhSachChuyenXeDaLoc);
   };
 
+  // Lọc danh sách để chỉ giữ lại một lựa chọn cho mỗi giá trị duy nhất của `item.diemdi`
+  const uniqueOptions = danhsachchuyenxe.reduce((acc, current) => {
+    const existingOption = acc.find(
+      (option) => option.value === current.diemdi
+    );
+    if (!existingOption) {
+      acc.push({ value: current.diemdi, label: current.diemdi });
+    }
+    return acc;
+  }, []);
 
- // Lọc danh sách để chỉ giữ lại một lựa chọn cho mỗi giá trị duy nhất của `item.diemdi`
- const uniqueOptions = danhsachchuyenxe.reduce((acc, current) => {
-  const existingOption = acc.find((option) => option.value === current.diemdi);
-  if (!existingOption) {
-    acc.push({ value: current.diemdi, label: current.diemdi });
-  }
-  return acc;
-}, []);
-
-
-
-const uniqueOptions2 = danhsachchuyenxe.reduce((acc, current) => {
-  const existingOption = acc.find((option) => option.value === current.diemden);
-  if (!existingOption) {
-    acc.push({ value: current.diemden, label: current.diemden });
-  }
-  return acc;
-}, []);
-
-
+  const uniqueOptions2 = danhsachchuyenxe.reduce((acc, current) => {
+    const existingOption = acc.find(
+      (option) => option.value === current.diemden
+    );
+    if (!existingOption) {
+      acc.push({ value: current.diemden, label: current.diemden });
+    }
+    return acc;
+  }, []);
 
   return (
     <div>
@@ -153,11 +154,11 @@ const uniqueOptions2 = danhsachchuyenxe.reduce((acc, current) => {
                   Điểm đi
                 </label>
                 <Select
-      value={selectedOption}
-      onChange={handleChange}
-      options={uniqueOptions}
-      className="customselect"
-    />
+                  value={selectedOption}
+                  onChange={handleChange}
+                  options={uniqueOptions}
+                  className="customselect"
+                />
               </div>
             </div>
             <div className="col">
@@ -166,11 +167,11 @@ const uniqueOptions2 = danhsachchuyenxe.reduce((acc, current) => {
                   Điểm đến
                 </label>
                 <Select
-        value={selectedOption2}
-        onChange={handleChange2}
-        options={uniqueOptions2}
-        className="customselect"
-      />
+                  value={selectedOption2}
+                  onChange={handleChange2}
+                  options={uniqueOptions2}
+                  className="customselect"
+                />
               </div>
             </div>
             <div className="col">
@@ -208,16 +209,21 @@ const uniqueOptions2 = danhsachchuyenxe.reduce((acc, current) => {
             <h2>Danh sách chuyến xe:</h2>
             <ul>
               {chuyenXe.map((item, index) => (
-                <li key={index}>
-                  Chuyến xe {item.tenchuyen} - Điểm đi: {item.diemdi}, Điểm đến:
-                  {item.diemden},
-                  Giờ đi: {item.idmachuyenData.thoigian}, Số vé:
-                  {item.idmachuyenData.soluongve},giá:
-                  {item.gia}
-                  <Link to={`/datxe/${item.idmachuyenData.id}`}>
-                    {" "}
-                    <button>Chi Tiết</button>
-                  </Link>
+                <li key={index} className="chuyen-xe-item">
+                  <div className="chuyen-xe-info">
+                    <p>
+                      Chuyến xe {item.tenchuyen} - Điểm đi: {item.diemdi}, Điểm đến:
+                      {item.diemden}, Giờ đi: {item.idmachuyenData.thoigian}
+                    </p>
+                    <p>
+                      Số vé: {item.idmachuyenData.soluongve}, Giá: {item.gia}
+                    </p>
+                  </div>
+                  <div className="chuyen-xe-actions">
+                    <Link to={`/datxe/${item.idmachuyenData.id}`}>
+                      <button>Chi Tiết</button>
+                    </Link>
+                  </div>
                 </li>
               ))}
             </ul>
