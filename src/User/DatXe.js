@@ -47,6 +47,7 @@ function Booking() {
     idttchuyenxe: "",
   });
   const handleOnChangeInput = (event, id) => {
+    
     const copyState = { ...state };
     copyState[id] = event.target.value;
     setState({ ...copyState });
@@ -55,11 +56,19 @@ function Booking() {
   let idchuyenxene = id;
 
   const buttonDatve = async () => {
+
+
     let sdtne = "";
     if (thongtin && thongtin !== " ") {
       sdtne = thongtin.sdt;
+   
     } else {
       sdtne = state.sdt;
+      if(sdtne==="")
+      {
+        alert("vui lòng nhập Số điện thoại ")
+      }
+      
     }
 
     let email = "";
@@ -67,6 +76,10 @@ function Booking() {
       email = thongtin.email;
     } else {
       email = state.email;
+      if(email==="")
+      {
+        alert("vui lòng nhập email ")
+      }
     }
 
     let hoten = "";
@@ -74,6 +87,10 @@ function Booking() {
       hoten = thongtin.hoten;
     } else {
       hoten = state.hoten;
+      if(hoten==="")
+      {
+        alert("vui lòng nhập Họ và Tên ")
+      }
     }
 
 
@@ -83,46 +100,52 @@ function Booking() {
 
      
 
-      datvexe({
-        sdt: sdtne,
-        giave: totalPrice,
-        soghe: selectedSeats.join(", "),
-        machuyen: id,
-        thoigianbatdau: new Date(),
-        thoigianmua: chuyenxe.thoigian,
 
-        matk: 1,
-// gui email
-        reciverEmail: email,
-        hoten: hoten,
-        tonggia: totalPrice,
-        soghe: selectedSeats.join(", "),
-        machuyen: id,
-        ngaydat: new Date(),
-        giodi: chuyenxe.thoigian,
-// gui email
+  datvexe({
+    sdt: sdtne,
+    giave: totalPrice,
+    soghe: selectedSeats.join(", "),
+    machuyen: id,
+    thoigianbatdau: new Date(),
+    thoigianmua: chuyenxe.thoigian,
 
-        sdt: state.sdt,
-        email: state.email,
-        hoten: state.hoten,
+    matk: 1,
+// gui email
+    reciverEmail: email,
+    hoten: hoten,
+    tonggia: totalPrice,
+    soghe: selectedSeats.join(", "),
+    machuyen: id,
+    ngaydat: new Date(),
+    giodi: chuyenxe.thoigian,
+// gui email
+    email: state.email,
+ 
+  });
+
+  if ((datve = true)) {
+    if (layttchitietchuyenxe.idttchuyenxe !== undefined) {
+      updatechitietchuyenxe({
+        idttchuyenxe: layttchitietchuyenxe.idttchuyenxe,
+
+        soghe: layttchitietchuyenxe.soghe + ", " + selectedSeats.join(", "),
       });
+    } else {
+      chitietchuyenxe({
+        idttchuyenxe: id,
+        soghe: selectedSeats.join(", "),
+      });
+    }
+  } else {
+    console.log("cap nhat ve that bai");
+  }
 
-      if ((datve = true)) {
-        if (layttchitietchuyenxe.idttchuyenxe !== undefined) {
-          updatechitietchuyenxe({
-            idttchuyenxe: layttchitietchuyenxe.idttchuyenxe,
 
-            soghe: layttchitietchuyenxe.soghe + ", " + selectedSeats.join(", "),
-          });
-        } else {
-          chitietchuyenxe({
-            idttchuyenxe: id,
-            soghe: selectedSeats.join(", "),
-          });
-        }
-      } else {
-        console.log("cap nhat ve that bai");
-      }
+
+
+
+
+     
     } 
     else {
 

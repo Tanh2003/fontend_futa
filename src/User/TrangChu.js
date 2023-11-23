@@ -122,6 +122,15 @@ function TimKiem() {
     return acc;
   }, []);
 
+
+  const formatDate = (isoDate) => {
+    const dateObject = new Date(isoDate);
+    const day = dateObject.getDate();
+    const month = dateObject.getMonth() + 1;
+    const year = dateObject.getFullYear();
+
+    return `${day}/${month}/${year}`;
+  };
   return (
     <div>
       <main>
@@ -213,7 +222,7 @@ function TimKiem() {
                   <div className="chuyen-xe-info">
                     <p>
                       Chuyến xe {item.tenchuyen} - Điểm đi: {item.diemdi}, Điểm đến:
-                      {item.diemden}, Giờ đi: {item.idmachuyenData.thoigian}
+                      {item.diemden}, Ngày đi: {formatDate(item.idmachuyenData.ngay)} Giờ đi: {item.idmachuyenData.thoigian}
                     </p>
                     <p>
                       Số vé: {item.idmachuyenData.soluongve}, Giá: {item.gia}

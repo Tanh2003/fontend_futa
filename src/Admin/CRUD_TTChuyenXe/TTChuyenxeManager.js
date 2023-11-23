@@ -170,10 +170,10 @@ class TTChuyenxeManager extends Component {
                     className=" btn btn-primary px-3"
                     onClick={() => this.handleAddCategories()}
                   >
-                    <i class="fas fa-box mr-2"></i>Thêm chuyến xe
+                    <i class="fas fa-box mr-2"></i>Thêm thông tin  chuyến xe
                   </button>
 
-                  <h2 className="h2--title">Danh sách chuyến xe</h2>
+                  <h2 className="h2--title">Danh sách Thông tin chuyến xe</h2>
 
                   <div className="table-container">
                     <table>

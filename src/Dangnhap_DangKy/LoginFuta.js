@@ -32,8 +32,8 @@ function LoginFuta() { // Đặt tên thành phần React là Login thay vì log
           }
           if (data && data.errcode === 0) {
             localStorage.setItem('taikhoan', JSON.stringify(data.taikhoan));
-            if (data.taikhoan.maquyen === 2) {
-              history.replace("/admin/quyen");
+            if (data.taikhoan.maquyen === 1) {
+              history.replace("/admin/taikhoan");
               window.location.reload();
             } else {
               history.replace("/");

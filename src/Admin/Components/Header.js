@@ -10,12 +10,12 @@ export const Header = () => {
           <h1>Admin Page</h1>
         </div>
         <div className=" username d-flex">
-          <h3> xin chào,Tuấn Anh</h3>
+          <h3> xin chào,Admin</h3>
           
          
         </div>
         <div>
-        <h3>
+        {/* <h3>
         <NavDropdown
          
          title={<i className="fas fa-cogs" style={{background:"white"}}></i>}
@@ -33,7 +33,7 @@ export const Header = () => {
            Đăng xuất
          </NavDropdown.Item>
        </NavDropdown>
-        </h3>
+        </h3> */}
         </div>
        
         

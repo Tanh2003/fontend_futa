@@ -33,14 +33,35 @@ class ChuyenxeManager extends Component {
   async componentDidMount() {
     await this.getAllchuyenxeReact();
   }
-  getAllchuyenxeReact = async () => {
-    let response = await getAllChuyenxe("ALL");
-    if (response && response.errcode == 0) {
-      this.setState({
-        arrchuyenxe: response.chuyenxe,
-      });
-    }
-  };
+
+
+  // Thêm phương thức để loại bỏ các phần tử trùng lặp
+removeDuplicates = (arr) => {
+  const uniqueArr = arr.filter(
+    (value, index, self) => self.findIndex((item) => item.id === value.id) === index
+  );
+  return uniqueArr;
+};
+
+// Trong phương thức getAllchuyenxeReact, gọi phương thức removeDuplicates trước khi cập nhật state
+getAllchuyenxeReact = async () => {
+  let response = await getAllChuyenxe("ALL");
+  if (response && response.errcode === 0) {
+    const uniqueArrchuyenxe = this.removeDuplicates(response.chuyenxe);
+    this.setState({
+      arrchuyenxe: uniqueArrchuyenxe,
+    });
+  }
+};
+
+  // getAllchuyenxeReact = async () => {
+  //   let response = await getAllChuyenxe("ALL");
+  //   if (response && response.errcode == 0) {
+  //     this.setState({
+  //       arrchuyenxe: response.chuyenxe,
+  //     });
+  //   }
+  // };
 
   handleAddCategories = () => {
     this.setState({
@@ -132,25 +153,15 @@ class ChuyenxeManager extends Component {
    */
 
   render() {
-    const uniqueChuyenxe = arrchuyenxe.filter(
-      (chuyenxe, index, self) =>
-        index ===
-        self.findIndex(
-          (c) =>
-            c.tenchuyen === chuyenxe.tenchuyen &&
-            c.dodai === chuyenxe.dodai &&
-            c.diemdi === chuyenxe.diemdi &&
-            c.diemden === chuyenxe.diemden &&
-            c.gia === chuyenxe.gia
-        )
-    );
+ 
     const { arrchuyenxe, currentPage, productsPerPage } = this.state;
     const indexOfLastProduct = currentPage * productsPerPage;
     const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
-    const currentProducts = uniqueChuyenxe.slice(
+    const currentProducts = arrchuyenxe.slice(
       indexOfFirstProduct,
       indexOfLastProduct
     );
+ 
     return (
       <div className="hello">
         <ModalChuyenxe

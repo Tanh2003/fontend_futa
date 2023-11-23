@@ -35,6 +35,15 @@ export const DashBoard = () => {
     history.replace("/admin/taikhoan");
   };
 
+  const handleLogout = () => {
+    localStorage.removeItem("taikhoan");
+   
+
+    history.replace("/Login"); // Sử dụng replace thay vì push
+    window.location.reload(); // Tải lại trang
+  };
+
+
   return (
     <>
       <div className="sidebar">
@@ -75,7 +84,7 @@ export const DashBoard = () => {
           </li>
 
        
-          <li className="logout">
+          <li className="logout" onClick={()=>handleLogout()}>
             <i className="fas fa-sign-out-alt"></i>
             <span>Đăng xuất</span>
           </li>

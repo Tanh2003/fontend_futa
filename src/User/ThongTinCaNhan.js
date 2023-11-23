@@ -101,7 +101,7 @@ function CapNhapProfile() {
        
          
         });
-        history.replace("/");
+        history.replace("/Informationprofile");
       }
     } catch (e) {
       console.log(e);

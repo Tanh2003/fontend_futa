@@ -1,49 +1,52 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "react-toastify/dist/ReactToastify.css";
 import "./TimKiem.scss";
 import SearchResult from "./SearchResult";
 
 import Footer from "../FooterFuta/Footer";
 import HeaderFutaMain from "../HeaderFuta/HeaderFutaMain";
+import { getAllVexe} from "../userService";
+import { set } from "lodash";
 
 function TimKiemVe() {
   const [searchId, setSearchId] = useState("");
-  const [searchResult, setSearchResult] = useState(null);
+  const [thongtinvexe, setthongtinvexe] = useState("");
 
-  const handleSearch = () => {
-    // Xử lý tìm kiếm dựa trên mã ID vé
-    const foundResult = findTicketById(searchId);
+  useEffect(() => {
+   
+    laythongtinvexe();
+  }, []);
 
-    if (foundResult) {
-      setSearchResult(foundResult);
-    } else {
-      setSearchResult(null);
-    }
+
+
+  const laythongtinvexe = async () => {
+   
+      // Kiểm tra xem `id` có tồn tại không
+      let response = await getAllVexe(searchId);
+      if (response && response.errcode === 0) {
+        setthongtinvexe(response.vexe);
+      }
+  
   };
 
-  const findTicketById = (id) => {
-    // Giả định rằng data là danh sách vé đã mua
-    const data = [
-      {
-        id: 1,
-        departure: "A",
-        destination: "B",
-        date: "2023-01-01",
-        price: 100000,
-      },
-      {
-        id: 2,
-        departure: "C",
-        destination: "D",
-        date: "2023-01-02",
-        price: 150000,
-      },
-      // ...
-    ];
 
-    return data.find((item) => item.id === parseInt(id));
+
+
+
+
+
+
+
+
+
+
+
+
+  const handleSearch = async() => {
+    await laythongtinvexe();
   };
 
+console.log("xem thong tin ve xe",thongtinvexe)
   return (
     <div className="search-container">
       <h1>Tìm kiếm vé</h1>
@@ -57,7 +60,7 @@ function TimKiemVe() {
       </div>
       <button onClick={handleSearch}>Tìm kiếm</button>
       {/* Hiển thị kết quả tìm kiếm */}
-      <SearchResult result={searchResult} />
+      <SearchResult result={thongtinvexe} />
     </div>
   );
 }
