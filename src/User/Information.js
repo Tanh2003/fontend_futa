@@ -14,6 +14,8 @@ function Thongtinprofile() {
   const [thongtin, setThongtin] = useState();
   useEffect(() => {
     const fetchData = async () => {
+
+
         const getAllTaikhoanReact = async () => {
             const taiKhoanData = JSON.parse(localStorage.getItem('taikhoan'));
             if (taiKhoanData) {
@@ -26,6 +28,7 @@ function Thongtinprofile() {
                 }
             }
         };
+        
 
         // Gọi hàm async
         await getAllTaikhoanReact();

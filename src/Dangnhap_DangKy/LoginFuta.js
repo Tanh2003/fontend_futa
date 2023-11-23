@@ -31,16 +31,7 @@ function LoginFuta() { // Đặt tên thành phần React là Login thay vì log
             setErrMessage(data.message);
           }
           if (data && data.errcode === 0) {
-           
             localStorage.setItem('taikhoan', JSON.stringify(data.taikhoan));
-            // let response = await getAllThongtintaikhoan(data.taikhoan.sdt);
-            // if (response && response.errcode == 0) {
-               
-            //   localStorage.setItem('arrtaikhoan', JSON.stringify(response.info.sdt));
-            // }
-            
-
-           
             if (data.taikhoan.maquyen === 2) {
               history.replace("/admin/quyen");
               window.location.reload();

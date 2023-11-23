@@ -33,6 +33,7 @@ function TimKiem() {
   }, []);
 
   useEffect(() => {
+
     const getAllthongtinchuyenxe = async () => {
       let response = await getAllTTchuyenxe("ALL");
       if (response && response.errcode === 0) {
@@ -40,6 +41,7 @@ function TimKiem() {
       }
     };
 
+    
     getAllthongtinchuyenxe();
   }, []);
 
@@ -87,23 +89,12 @@ function TimKiem() {
     const diemDen = selectedOption2.value;
     const ngayDi = formattedDate;
 
-    console.log("diemDi:", diemDi);
-    console.log("diemDen:", diemDen);
-    console.log("ngayDi ne:", ngayDi);
-    console.log("hello", danhsachchuyenxe);
-
     // Lọc danh sách chuyến xe dựa trên các thông tin đã nhập
     const danhSachChuyenXeDaLoc = danhsachchuyenxe.filter((chuyenDi) => {
-      const ngayDaDinhDang = moment(chuyenDi.idmachuyenData.ngay).format(
-        "MM/DD/YYYY"
-      );
-      const ngaydi2 = moment(ngayDi).format("MM/DD/YYYY");
-
-      return (
-        chuyenDi.diemdi === diemDi &&
-        chuyenDi.diemden === diemDen &&
-        ngayDaDinhDang === ngaydi2
-      );
+      const ngayDaDinhDang = moment(chuyenDi.idmachuyenData.ngay).format('MM/DD/YYYY');
+      const ngaydi2=moment(ngayDi).format('MM/DD/YYYY');
+     
+      return chuyenDi.diemdi === diemDi && chuyenDi.diemden === diemDen&&ngayDaDinhDang===ngaydi2;
     });
 
     // Cập nhật danh sách chuyến xe trong trạng thái chuyenXe
