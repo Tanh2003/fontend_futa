@@ -9,6 +9,7 @@ import LoginFuta from "../Dangnhap_DangKy/LoginFuta";
 import TrangChu from "../User/TrangChu";
 import LienHe from "../User/LienHe";
 import DatXe from "../User/DatXe";
+import TimKiem from "../User/TimKiem";
 
 import QuyenAdmin from "../Admin/QuyenAdmin";
 import TaikhoanAdmin from "../Admin/TaikhoanAdmin";
@@ -39,6 +40,7 @@ function App() {
         <Route path="/Informationprofile" component={Information} />
         <Route path="/updateInformation" component={ThongTinCaNhan} />
         <Route path="/lienhe" exact component={LienHe} />
+        <Route path="/timkiem" exact component={TimKiem} />
         <Route path="/datxe/:id" component={DatXe} />
         <Route path="/datvethanhcong/:phone" exact component={TicketConfirmation} />
         // phải để dấu "/" ở cuối route
