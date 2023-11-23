@@ -490,33 +490,14 @@ function Booking() {
           </div>
 
           {/* Bảng thứ hai */}
-          <div>
-            <div className="pickup-dropoff">
-              <div className="pickup">
-                <label> Điểm đón: </label>
-                <select onChange={handleDropoffChange} value={pickupLocation}>
-                  <option value="Phú Yên"> Phú Yên </option>
-                </select>
-              </div>
-              <div className="dropoff">
-                <label> Điểm trả khách: </label>
-                <select onChange={handleDropoffChange} value={dropOffLocation}>
-                  <option value="Bến Xe Miền Đông"> Bến Xe Miền Đông </option>
-                  <option value="Bến Xe Miền Tây"> Bến Xe Miền Tây </option>
-                </select>
-              </div>
-            </div>
-          </div>
+          
         </div>
         <div className="table-container2">
           <div className="selected-seats dstable">
             <p> Danh sách ghế đã chọn: {selectedSeats.join(", ")} </p>
             <p> Tổng số ghế đã chọn: {selectedSeats.length} </p>
             <p> Tổng tiền: {formatPrice(totalPrice)} </p>
-            <p>
-              {pickupLocation} <i className="fas fa-angle-double-right"> </i>
-              {dropOffLocation}
-            </p>
+            
           </div>
           <div className="custom-box3 table-container2">
             <div className="">
