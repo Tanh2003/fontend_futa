@@ -132,10 +132,22 @@ class ChuyenxeManager extends Component {
    */
 
   render() {
+    const uniqueChuyenxe = arrchuyenxe.filter(
+      (chuyenxe, index, self) =>
+        index ===
+        self.findIndex(
+          (c) =>
+            c.tenchuyen === chuyenxe.tenchuyen &&
+            c.dodai === chuyenxe.dodai &&
+            c.diemdi === chuyenxe.diemdi &&
+            c.diemden === chuyenxe.diemden &&
+            c.gia === chuyenxe.gia
+        )
+    );
     const { arrchuyenxe, currentPage, productsPerPage } = this.state;
     const indexOfLastProduct = currentPage * productsPerPage;
     const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
-    const currentProducts = arrchuyenxe.slice(
+    const currentProducts = uniqueChuyenxe.slice(
       indexOfFirstProduct,
       indexOfLastProduct
     );
