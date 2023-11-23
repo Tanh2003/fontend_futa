@@ -30,6 +30,11 @@ class KhachhangManager extends Component {
   async componentDidMount() {
     await this.getAllkhachhangReact();
   }
+
+
+
+
+  
   getAllkhachhangReact = async () => {
     let response = await getAllKhachhang("ALL");
     if (response && response.errcode == 0) {

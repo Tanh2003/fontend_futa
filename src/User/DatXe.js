@@ -76,18 +76,12 @@ function Booking() {
       hoten = state.hoten;
     }
 
-    if (thongtin && thongtin !== " ") {
-      console.log("đã có tài khoản trong database");
 
-      guiemail({
-        reciverEmail: email,
-        hoten: hoten,
-        tonggia: totalPrice,
-        soghe: selectedSeats.join(", "),
-        machuyen: id,
-        ngaydat: new Date(),
-        giodi: chuyenxe.thoigian,
-      });
+    /// trường hợp người dùng đã đăng nhập
+    if (thongtin && thongtin !== " ") {
+      console.log("đã có tài khoản trong database rui nè");
+
+     
 
       datvexe({
         sdt: sdtne,
@@ -98,6 +92,19 @@ function Booking() {
         thoigianmua: chuyenxe.thoigian,
 
         matk: 1,
+// gui email
+        reciverEmail: email,
+        hoten: hoten,
+        tonggia: totalPrice,
+        soghe: selectedSeats.join(", "),
+        machuyen: id,
+        ngaydat: new Date(),
+        giodi: chuyenxe.thoigian,
+// gui email
+
+        sdt: state.sdt,
+        email: state.email,
+        hoten: state.hoten,
       });
 
       if ((datve = true)) {
@@ -116,21 +123,17 @@ function Booking() {
       } else {
         console.log("cap nhat ve that bai");
       }
-    } else {
-      if (state.sdt !== "") {
-        if (layttchitietchuyenxe.idttchuyenxe !== undefined) {
-          updatechitietchuyenxe({
-            idttchuyenxe: layttchitietchuyenxe.idttchuyenxe,
+    } 
+    else {
 
-            soghe: layttchitietchuyenxe.soghe + ", " + selectedSeats.join(", "),
-          });
-        } else {
-          chitietchuyenxe({
-            idttchuyenxe: id,
-            soghe: selectedSeats.join(", "),
-          });
-        }
 
+// Trường hợp khách hàng chưa đăng nhập
+
+
+
+
+      if (state.email !== "") {
+      
         thongtinkhachhang({
           sdt: state.sdt,
           email: state.email,
@@ -145,10 +148,10 @@ function Booking() {
           thoigianbatdau: new Date(),
           thoigianmua: chuyenxe.thoigian,
 
-          matk: 1,
-        });
 
-        guiemail({
+          matk: 1,
+
+          //gui email
           reciverEmail: email,
           hoten: hoten,
           tonggia: totalPrice,
@@ -156,7 +159,27 @@ function Booking() {
           machuyen: id,
           ngaydat: new Date(),
           giodi: chuyenxe.thoigian,
+
+          //gui email
+          sdt: state.sdt,
+          email: state.email,
+          hoten: state.hoten,
+          
         });
+        if (layttchitietchuyenxe.idttchuyenxe !== undefined) {
+          updatechitietchuyenxe({
+            idttchuyenxe: layttchitietchuyenxe.idttchuyenxe,
+
+            soghe: layttchitietchuyenxe.soghe + ", " + selectedSeats.join(", "),
+          });
+        } else {
+          chitietchuyenxe({
+            idttchuyenxe: id,
+            soghe: selectedSeats.join(", "),
+          });
+        }
+
+        
       }
     }
   };
@@ -170,31 +193,36 @@ function Booking() {
       } else {
         toast.success("Đặt vé thành công!");
         datve = true;
+        history.replace(`/datvethanhcong/${idchuyenxene}`, { idchuyenxene }); // Sử dụng replace thay vì push
+        //       toast.success("Thông tin vé đã gửi email cho bạn :3");
       }
     } catch (e) {
       console.log(e);
     }
   };
 
-  const guiemail = async (data) => {
-    try {
-      const response = await guithongtinveemail(data);
-      if (response && response.errCode !== 0) {
-        alert(response.errMessage);
-      } else {
-        history.replace(`/datvethanhcong/${idchuyenxene}`, { idchuyenxene }); // Sử dụng replace thay vì push
-        toast.success("Thông tin vé đã gửi email cho bạn :3");
-      }
-    } catch (e) {
-      console.log(e);
-    }
-  };
+  // const guiemail = async (data) => {
+  //   try {
+  //     const response = await guithongtinveemail(data);
+  //     if (response && response.errCode !== 0) {
+  //       alert(response.errMessage);
+  //     } else {
+  //      
+  //     }
+  //   } catch (e) {
+  //     console.log(e);
+  //   }
+  // };
 
   const thongtinkhachhang = async (data) => {
     try {
       const response = await createNewKhachhang(data);
       if (response && response.errcode !== 0) {
-        alert(response.errMessage);
+        setState({
+          sdt: "",
+          hoten: "",
+          email: "",
+        });
       } else {
         setState({
           sdt: "",
