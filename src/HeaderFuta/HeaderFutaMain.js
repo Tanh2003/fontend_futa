@@ -74,7 +74,7 @@ setThongtin(null);
               <Link to="/trangchu">Trang chủ</Link>
             </li>
             <li>
-              <a href="#">Kiểm tra vé</a>
+              <Link to="/timkiem">Kiểm tra vé</Link>
             </li>
             <li>
              <Link to="/lienhe"> <a>Liên hệ</a></Link>
